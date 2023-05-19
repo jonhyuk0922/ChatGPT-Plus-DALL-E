@@ -28,11 +28,11 @@ if submit and user_input:
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
 
-if "sorry" not in prompt:
-    with st.spinner("Waiting for DALL-E ..."):
-        dalle_response = openai.Image.create(
-            prompt=prompt,
-            size = size
-        )
+    if "sorry" not in prompt:
+        with st.spinner("Waiting for DALL-E ..."):
+            dalle_response = openai.Image.create(
+                prompt=prompt,
+                size = size
+            )
 
-    st.image(dalle_response["data"][0]["url"])
+        st.image(dalle_response["data"][0]["url"])
